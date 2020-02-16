@@ -48,8 +48,18 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         //Update the UI
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
+        let winningScore;
+        let input = document.querySelector('.winning-score').value;
+
+        if (input)
+        {
+            winningScore = input;
+        } else {
+            winningScore = 100;
+        }
+
         //Check if player won the game
-        if (scores[activePlayer] >= 100) {
+        if (scores[activePlayer] >= winningScore) {
             document.querySelector('#name-' + activePlayer).textContent = 'WINNER!!';
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -65,14 +75,13 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 function nextPlaya() {
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
     roundScore = 0;
+    previousDice = 0;
 
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
 
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
-
-    previousDice = 5;
 
     //document.querySelector('.dice').style.display = 'none';
 }
@@ -83,7 +92,7 @@ function init() {
     scores = [0,0];
     activePlayer = 0;
     roundScore = 0;
-    previousDice = 5;
+    previousDice = 0;
     gamePlaying = true;
 
     document.querySelector('.dice').style.display = 'none';
