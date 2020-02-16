@@ -59,8 +59,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
             //Next player
             nextPlaya();
         }
-    }
-    
+    }    
 });
 
 function nextPlaya() {
@@ -73,7 +72,7 @@ function nextPlaya() {
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
 
-    previousDice = 0;
+    previousDice = 5;
 
     //document.querySelector('.dice').style.display = 'none';
 }
@@ -84,6 +83,7 @@ function init() {
     scores = [0,0];
     activePlayer = 0;
     roundScore = 0;
+    previousDice = 5;
     gamePlaying = true;
 
     document.querySelector('.dice').style.display = 'none';
